@@ -3,7 +3,7 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       http://example.com
+ * @link       http://www.myvenuelive.com
  * @since      1.0.0
  *
  * @package    Book_Or_Mag
@@ -19,7 +19,7 @@
  *
  * @package    Book_Or_Mag
  * @subpackage Book_Or_Mag/includes
- * @author     Your Name <email@example.com>
+ * @author     Your Name <email@www.myvenuelive.com>
  */
 class Book_Or_Mag_Loader {
 
