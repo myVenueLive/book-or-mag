@@ -3569,8 +3569,8 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
 						);
 						$args     = wp_parse_args( $args, $defaults );
 
-						// Set plugin names to $this->plugin_names property.
-						$this->plugin_names = $args['names'];
+						// Set plugin names to $this->book_or_mags property.
+						$this->book_or_mags = $args['names'];
 
 						// Extract the new args.
 						parent::__construct( $args );
@@ -3624,7 +3624,7 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
 					 */
 					public function before( $title = '' ) {
 						if ( empty( $title ) ) {
-							$title = esc_html( $this->plugin_names[ $this->i ] );
+							$title = esc_html( $this->book_or_mags[ $this->i ] );
 						}
 						parent::before( $title );
 					}
@@ -3641,7 +3641,7 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
 					 */
 					public function after( $title = '' ) {
 						if ( empty( $title ) ) {
-							$title = esc_html( $this->plugin_names[ $this->i ] );
+							$title = esc_html( $this->book_or_mags[ $this->i ] );
 						}
 						parent::after( $title );
 

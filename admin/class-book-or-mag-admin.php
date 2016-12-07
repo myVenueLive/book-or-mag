@@ -120,7 +120,7 @@ class Book_Or_Mag_Admin {
 			__( 'Book Or Mag Settings', 'book-or-mag' ),
 			__( 'Book Or Mag', 'book-or-mag' ),
 			'manage_options',
-			$this->plugin_name,
+			$this->book_or_mag,
 			array( $this, 'display_options_page' )
 		);
 	
@@ -146,7 +146,7 @@ class Book_Or_Mag_Admin {
 			$this->option_name . '_general',
 			__( 'General', 'book-or-mag' ),
 			array( $this, $this->option_name . '_general_cb' ),
-			$this->plugin_name
+			$this->book_or_mag
 		);
 
 		// Add settings fields for General section
@@ -154,14 +154,14 @@ class Book_Or_Mag_Admin {
 			$this->option_name . '_cover',
 			__( 'Cover style', 'book-or-mag' ),
 			array( $this, $this->option_name . '_cover_cb' ),
-			$this->plugin_name,
+			$this->book_or_mag,
 			$this->option_name . '_general',
 			array( 'label_for' => $this->option_name . '_cover' )
 		);
 
 		// Register fields
 		register_setting(
-			$this->plugin_name,
+			$this->book_or_mag,
 			$this->option_name . '_cover',
 			array( $this, $this->option_name . '_sanitize_cover' )
 		);
