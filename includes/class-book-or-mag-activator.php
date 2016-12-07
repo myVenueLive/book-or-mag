@@ -18,7 +18,7 @@
  * @since      1.0.0
  * @package    Book_Or_Mag
  * @subpackage Book_Or_Mag/includes
- * @author     Your Name <email@www.myvenuelive.com>
+ * @author     mVL Contact <info@myvenuelive.com>
  */
 class Book_Or_Mag_Activator {
 

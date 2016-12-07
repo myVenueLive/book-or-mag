@@ -25,7 +25,7 @@
  * @since      1.0.0
  * @package    Book_Or_Mag
  * @subpackage Book_Or_Mag/includes
- * @author     Your Name <email@www.myvenuelive.com>
+ * @author     mVL Contact <info@myvenuelive.com>
  */
 class Book_Or_Mag {
 
@@ -119,6 +119,12 @@ class Book_Or_Mag {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-book-or-mag-public.php';
 
+		/**
+		 * The class responsible for plugin activation
+		 * 
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tgm-plugin-activation.php';
+
 		$this->loader = new Book_Or_Mag_Loader();
 
 	}
@@ -153,6 +159,7 @@ class Book_Or_Mag {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_options_page' );
 
 	}
 

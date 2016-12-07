@@ -18,7 +18,7 @@
  *
  * @package    Book_Or_Mag
  * @subpackage Book_Or_Mag/admin
- * @author     Your Name <email@www.myvenuelive.com>
+ * @author     mVL Contact <info@myvenuelive.com>
  */
 class Book_Or_Mag_Admin {
 
@@ -98,6 +98,32 @@ class Book_Or_Mag_Admin {
 
 		wp_enqueue_script( $this->book_or_mag, plugin_dir_url( __FILE__ ) . 'js/book-or-mag-admin.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+	/**
+	 * Add an options page under the Settings submenu
+	 *
+	 * @since  1.0.0
+	 */
+	public function add_options_page() {
+	
+		$this->plugin_screen_hook_suffix = add_options_page(
+			__( 'Book Or Mag Settings', 'book-or-mag' ),
+			__( 'Book Or Mag', 'book-or-mag' ),
+			'manage_options',
+			$this->plugin_name,
+			array( $this, 'display_options_page' )
+		);
+	
+	}
+
+	/**
+	 * Render the options page for plugin
+	 *
+	 * @since  1.0.0
+	 */
+	public function display_options_page() {
+		include_once 'partials/book-or-mag-admin-display.php';
 	}
 
 }
