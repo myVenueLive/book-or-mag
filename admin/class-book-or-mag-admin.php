@@ -41,6 +41,15 @@ class Book_Or_Mag_Admin {
 	private $version;
 
 	/**
+	 * The options name to be used in this plugin
+	 *
+	 * @since  	1.0.0
+	 * @access 	private
+	 * @var  	string 		$option_name 	Option name of this plugin
+	 */
+	private $option_name = 'book_or_mag';
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -124,6 +133,82 @@ class Book_Or_Mag_Admin {
 	 */
 	public function display_options_page() {
 		include_once 'partials/book-or-mag-admin-display.php';
+	}
+
+	/**
+	 * Register Settings for plugin
+	 *
+	 * @since  1.0.0
+	 */
+	public function register_setting() {
+		// Add a General section
+		add_settings_section(
+			$this->option_name . '_general',
+			__( 'General', 'book-or-mag' ),
+			array( $this, $this->option_name . '_general_cb' ),
+			$this->plugin_name
+		);
+
+		// Add settings fields for General section
+		add_settings_field(
+			$this->option_name . '_cover',
+			__( 'Cover style', 'book-or-mag' ),
+			array( $this, $this->option_name . '_cover_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_general',
+			array( 'label_for' => $this->option_name . '_cover' )
+		);
+
+		// Register fields
+		register_setting(
+			$this->plugin_name,
+			$this->option_name . '_cover',
+			array( $this, $this->option_name . '_sanitize_cover' )
+		);
+	}
+
+	/**
+	 * Render the text for the general section
+	 *
+	 * @since  1.0.0
+	 */
+	public function book_or_mag_general_cb() {
+		echo '<p>' . __( 'Please change the settings accordingly.', 'book-or-mag' ) . '</p>';
+	}
+
+	/**
+	 * Render the radio input field for cover option
+	 *
+	 * @since  1.0.0
+	 */
+	public function book_or_mag_cover_cb() {
+		$cover = get_option( $this->option_name . '_cover' );
+		?>
+			<fieldset>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_cover' ?>" id="<?php echo $this->option_name . '_cover' ?>" value="hard" <?php checked( $cover, 'hard' ); ?>>
+					<?php _e( 'Hard', 'book-or-mag' ); ?>
+				</label>
+				<br>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_cover' ?>" value="soft" <?php checked( $cover, 'soft' ); ?>>
+					<?php _e( 'Soft', 'book-or-mag' ); ?>
+				</label>
+			</fieldset>
+		<?php
+	}
+
+	/**
+	 * Sanitize the text cover value before being saved to database
+	 *
+	 * @param  string $cover $_POST value
+	 * @since  1.0.0
+	 * @return string           Sanitized value
+	 */
+	public function book_or_mag_sanitize_cover( $cover ) {
+		if ( in_array( $cover, array( 'hard', 'soft' ), true ) ) {
+	        return $cover;
+	    }
 	}
 
 }
