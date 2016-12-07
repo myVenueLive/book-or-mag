@@ -13,9 +13,9 @@
  * @package           Book_Or_Mag
  *
  * @wordpress-plugin
- * Plugin Name:       WordPress Plugin Boilerplate
+ * Plugin Name:       Book or Magazine Publications
  * Plugin URI:        http://www.myvenuelive/book-or-mag/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       This plugin enables creation and presentation of publications with smooth turning pages capability.
  * Version:           1.0.0
  * Author:            myVenueLive LLC
  * Author URI:        http://www.myvenuelive.com/
